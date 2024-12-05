@@ -1,0 +1,247 @@
+body {
+  background: #fff;
+  font-family: "Noto Sans", Arial, sans-serif;
+}
+
+.game-board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  perspective: 1000px;
+  margin-bottom: -10px;
+  margin-top: -15px;
+}
+
+.game-board .card {
+  width: 9%;
+  aspect-ratio: 3.3 / 5;
+  user-select: none;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 5px;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.game-board .card div {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: 0.6s;
+}
+
+.game-board .card .front {
+  font-size: 30px;
+  line-height: 120px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-board .card .back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  transform: rotateY(180deg);
+  line-height: 110px;
+  text-emphasis: none;
+}
+
+.game-board .card img {
+  vertical-align: middle;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 3.5 / 5;
+  object-fit: contain;
+}
+
+.game-board .card.flipped {
+  transform: rotateY(180deg);
+}
+
+.game-board .card.matched {
+  transform: rotateY(360deg);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.game-board .card.matched .front {
+  box-shadow: 0 0 0 2px rgba(#000, 0.05) inset;
+  animation: selected 0.8s 0s ease 1;
+  animation-fill-mode: both;
+  opacity: 0.2;
+}
+
+.restart-button {
+  width: 20em;
+  height: 3em;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  border-radius: 4px;
+  font-size: 17px;
+  background-color: #6d1124;
+  border: 0;
+}
+
+.centered {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-size: 2em; /* 원하는 크기 설정 */
+}
+
+h2 {
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 2em; /* 원하는 크기 설정 */
+  margin: 0.5em;
+}
+
+.adj {
+  margin-left: 15px;
+  font-size: 15px;
+  position: relative;
+  top: -5px;
+  background-color: #edf7f3;
+  border: 1px solid #ddd;
+  padding: 6px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.noun {
+  margin-left: 15px;
+  font-size: 15px;
+  position: relative;
+  top: -5px;
+  background-color: #f7edf0;
+  border: 1px solid #ddd;
+  padding: 6px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 102;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 101;
+}
+
+.popup-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.popup-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 0 10px 5px;
+  background-color: #ffffff;
+  z-index: 100; /* 다른 요소 위에 표시되도록 설정 */
+}
+
+.game-board-container {
+  margin-top: 50px; /* navbar 높이에 맞게 */
+  padding-bottom: 60px;
+}
+
+.trial-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  gap: 5px;
+  background-color: #ffffff;
+  padding: 5px;
+  z-index: 100;
+}
+
+.failure {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  background-color: #f79999;
+}
+
+.success {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  background-color: #9db1fa;
+}
+
+@keyframes selected {
+  0% {
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
