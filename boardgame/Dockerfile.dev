@@ -1,0 +1,15 @@
+FROM node:18
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+# 개발 환경에서 핫 리로드를 위해 nodemon을 설치하고, 코드 변경 시 자동 반영
+RUN npm install -g nodemon
+
+# PATH에 node_modules/.bin 추가
+ENV PATH=/app/node_modules/.bin:$PATH
+
+COPY . .
+EXPOSE 3000
+CMD ["nodemon", "src/index.js"]
+CMD ["npm", "start"]
