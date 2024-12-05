@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build:
+      context: ./boardgame
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./boardgame:/app
+    ports:
+      - "3002:3000"
+    environment: # 리액트 핫로딩 작동 옵션을 true 로 줘야 Volume 기능을 정상적으로 사용가능 (for 윈도우)
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true  # 리액트 앱을 끌 때 필요
