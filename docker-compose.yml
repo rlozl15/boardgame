@@ -5,8 +5,10 @@ services:
       dockerfile: Dockerfile.dev
     volumes:
       - ./boardgame:/app
+      - ~/.ssh:/root/.ssh # SSH 키를 읽기 전용으로 마운트
     ports:
       - "3002:3000"
     environment: # 리액트 핫로딩 작동 옵션을 true 로 줘야 Volume 기능을 정상적으로 사용가능 (for 윈도우)
       - CHOKIDAR_USEPOLLING=true
+      - GIT_SSH_COMMAND=ssh -i /root/.ssh/id_rsa  # SSH 키 경로 설정
     stdin_open: true  # 리액트 앱을 끌 때 필요
