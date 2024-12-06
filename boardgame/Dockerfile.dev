@@ -1,6 +1,6 @@
 FROM node:18
 WORKDIR /app
-COPY package*.json ./
+COPY /package*.json .
 RUN npm install
 
 # 개발 환경에서 핫 리로드를 위해 nodemon을 설치하고, 코드 변경 시 자동 반영
