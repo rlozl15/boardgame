@@ -1,4 +1,4 @@
-# boardgame
+# Dying Message BoardGame 프로젝트
 추리 요소를 담은 다잉메시지 보드게임을 웹 버전으로 구현한 프로젝트입니다.
 현재는 친구와의 이벤트를 위해 기획된 1회성 게임으로 설계되었지만, 추후 다회성 게임으로 확장하여 누구나 지속적으로 즐길 수 있는 콘텐츠로 발전시킬 계획입니다.
 
@@ -29,6 +29,9 @@
     - 프론트엔드: React, CSS
     - 컨테이너: Docker
 
-
-참고자료
+### 데모 링크
+https://rlozl15.github.io/boardgame/
+   
+   
+### 참고자료
 https://codesandbox.io/p/sandbox/react-card-flip-game-redi3
